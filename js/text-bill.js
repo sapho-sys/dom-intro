@@ -10,3 +10,36 @@
 // * add the appropriate value to the running total
 // * add nothing for invalid values that is not 'call' or 'sms'.
 // * display the latest total on the screen
+
+var callsTotal = 0;
+var smsTotal = 0;
+function textBillTotal(){
+
+   
+
+
+    // get the value entered in the billType textfield
+    var billTypeEntered = document.getElementById("billTypeText").value;
+    // update the correct total
+    if (billTypeEntered === "call"){
+        callsTotal += 2.75
+    }
+    else if (billTypeEntered === "sms"){
+        smsTotal += 0.75;
+    }
+    
+    //update the totals that is displayed on the screen.
+    document.getElementById("callTotalOne").innerHTML = callsTotal.toFixed(2);
+    document.getElementById("smsTotalOne").innerHTML = smsTotal.toFixed(2);
+    var totalCost = callsTotal + smsTotal;
+    document.getElementById("totalOne").innerHTML = totalCost.toFixed(2);
+
+     //color the total based on the criteria
+     if (totalCost >= 50){
+        // adding the danger class will make the text red
+        document.getElementById("totalOne").classList.add("danger");
+    }
+    else if (totalCost >= 30){
+        document.getElementById("totalOne").classList.add("warning");
+    }
+}

@@ -58,12 +58,12 @@
           <div class="row">
             <div class="eight columns">
               <h5>Enter bill string</h5>
-              <textarea name="name" rows="20" cols="40" class="billString" class="billString" ></textarea>
-              <button class="button-primary calculateBtn" on type="button" name="button">Calculate</button>
+              <textarea id="billString"  name="name" rows="20" cols="40" class="billString" ></textarea>
+              <button id="button" class="button-primary calculateBtn"  name="button" onclick="totalPhoneBill();">Calculate</button>
             </div>
             <div class="four columns">
               <strong>Total amount:</strong>
-              <span class="total ">R<span class="billTotal">0.00</span> </span>
+              <p id="total">R<span id="billTotal">0.00</span> </p>
             </div>
           </div>
         </div>
@@ -87,23 +87,23 @@
             <div class="six columns">
 
               <label for="">Bill type</label>
-              <input type="text" name="" value="" placeholder="enter 'call' or 'sms' " class="billTypeText">
-              <button class="button-primary addToBillBtn" type="button" name="button" >Add</button>
+              <input type="text" name="" value="" placeholder="enter 'call' or 'sms' " id="billTypeText">
+              <button class="button-primary addToBillBtn" type="button" name="button" onclick="textBillTotal()">Add</button>
           </div>
             <div class="six columns">
               <h5>Totals</h5>
               <table>
                 <tr>
                   <td>Call total</td>
-                  <td>R<span class="callTotalOne">27.50</span></td>
+                  <td>R<span id="callTotalOne">0.00</span></td>
                 </tr>
                 <tr>
                   <td>SMS total</td>
-                  <td>R<span class="smsTotalOne">13.75</span></td>
+                  <td>R<span id="smsTotalOne">0.00</span></td>
                 </tr>
                 <tr>
                   <td>Total</td>
-                  <td class="red">R<span class="totalOne">41.25</span></td>
+                  <td class="red">R<span id="totalOne">0.00</span></td>
                 </tr>
               </table>
             </div>
@@ -229,7 +229,7 @@
         </div>
       </div>
     </div>
-    <script src="js/calculate-bill.js" charset="utf-8"></script>
+    <script src="js/calculate-bill.js"></script>
     <script src="js/text-bill.js" charset="utf-8"></script>
     <script src="js/radio-bill.js" charset="utf-8"></script>
     <script src="js/settings-bill.js" charset="utf-8"></script>
