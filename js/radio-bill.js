@@ -13,6 +13,8 @@
 
 
 //textTotalAddBtn.addEventListener('click', textBillTotal);
+var callsTotal = 0;
+var smsTotal = 0;
 function radioBill(){
 var checkedRadioBtn = document.querySelector("input[name='billItemType']:checked");
 if (checkedRadioBtn){
