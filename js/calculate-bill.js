@@ -34,10 +34,10 @@ function totalPhoneBill(){
      
      if (totalFee >= 20){
         // adding the danger class will make the text red
-        document.getElementById("total").classList.add("orange1");
+        document.getElementById("billTotal").classList.add("warning");
     }
     if (totalFee > 30){
-    document.getElementById("total").classList.add("red1");
+    document.getElementById("billTotal").classList.add("danger");
         
     }
 
