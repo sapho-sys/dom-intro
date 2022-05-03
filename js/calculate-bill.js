@@ -15,7 +15,7 @@
 
 
 function totalPhoneBill(){
-    let str=document.getElementById("billString").value;                                                                                                 
+    let str=document.getElementById("billString").value.toLowerCase();                                                                                                 
     var services=str.split(',');
      var totalAmt=0;
      for(let i=0; i < services.length;i++){

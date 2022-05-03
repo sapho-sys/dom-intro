@@ -15,11 +15,13 @@ var callsTotal1 = 0;
 var smsTotal1 = 0;
 function textBillTotal(){
 
+    // var letters = /^[A-Za-z]/;
+
    
 
 
     // get the value entered in the billType textfield
-    var billTypeEntered = document.getElementById("billTypeText").value;
+    var billTypeEntered = document.getElementById("billTypeText").value.toLowerCase();
     // update the correct total
     if (billTypeEntered === "call"){
         callsTotal1 += 2.75
