@@ -193,7 +193,7 @@
                 <input type="radio" name="billItemTypeWithSettings" class="billItemTypeWithSettings" value="sms">
                 <span class="label-body">SMS</span>
               </label>
-              <button id="add" class="button-primary" type="button" name="button" onclick="settingsBill();">Add</button>
+              <button id="add" class="button-primary" type="button" name="button">Add</button>
           
               <h5>Totals</h5>
               <table>
@@ -207,7 +207,7 @@
                 </tr>
                 <tr>
                   <td>Total</td>
-                  <td class="orange"> R<span id="totalSettings">0.00</span> </td>
+                  <td>R<span class="totalSettings">0.00</span> </td>
                 </tr>
               </table>
           
@@ -215,11 +215,11 @@
             <div class="six columns">
               <h5>Settings</h5>
               <label for="exampleEmailInput">Call cost</label>
-              <input id="callCost" class="u-full-width callCostSetting" type="number" placeholder="eg. 2.55" onchange="settingsBill();"><br>
+              <input id="callCost" class="u-full-width callCostSetting" type="number" placeholder="eg. 2.55" ><br>
               <label for="exampleEmailInput">SMS cost</label>
               <input id="smsCost" class="u-full-width smsCostSetting" type="number" placeholder="eg. 0.65"><br>
               <label for="">Warning level</label>
-              <input id="warning" class="u-full-width warningLevelSetting " type="number" placeholder="eg. 30.00"  class="warningLevel" onchange="settingsBill();"><br>
+              <input id="warning" class="u-full-width warningLevelSetting " type="number" placeholder="eg. 30.00"  class="warningLevel"><br>
               <label for="">Critical level</label>
               <input id="critical" class="u-full-width criticalLevelSetting" type="number" placeholder="eg. 65.00">
               <button id="Entry" class="button-primary updateSettings" type="button" name="button">Update settings</button>
@@ -233,7 +233,9 @@
     <script src="js/calculate-bill.js"></script>
     <script src="js/text-bill.js" charset="utf-8"></script>
     <script src="js/radio-bill.js" charset="utf-8"></script>
+    <script src="js/settingBill-Factory.js" charset="utf-8"></script>
     <script src="js/settings-bill.js" charset="utf-8"></script>
+
 
   </body>
 </html>

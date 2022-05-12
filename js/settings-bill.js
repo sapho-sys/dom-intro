@@ -21,93 +21,75 @@
 // * display the latest total on the screen.
 // * check the value thresholds and display the total value in the right color.
 
-
-var callsTotal2=0;
-var smsTotal2=0;
-var totalCost2=0;
-var  selectedBtn=document.getElementById("Entry");
-selectedBtn.addEventListener('click', update)
-var settingsCall = 0
-var settingsSms = 0;
-var settingsCritics = 0;
-var settingsWarn = 0;
+var settingsBillingInstance = BillWithSettings();
 
 
-
-function settingsBill(){
-
-
-
-   
-
-    var checkedRadioBtn = document.querySelector("input[name='billItemTypeWithSettings']:checked");
-
-    if (checkedRadioBtn){
-        var billItemTypeWithSettings = checkedRadioBtn.value;
-        // billItemType will be 'call' or 'sms'
-    }
-    
-    if (billItemTypeWithSettings === "call"){
-        console.log('Call: ', settingsCall)
-        callsTotal2 += settingsCall;
-    }
-    else if (billItemTypeWithSettings === "sms"){
-        smsTotal2 += settingsSms;
-    }
-    
-    //update the totals that is displayed on the screen.
-    document.getElementById("callTotalSettings").innerHTML = callsTotal2.toFixed(2);
-    document.getElementById("smsTotalSettings").innerHTML = smsTotal2.toFixed(2);
-    var totalCost2 = callsTotal2 + smsTotal2;
-    document.getElementById("totalSettings").innerHTML = totalCost2.toFixed(2);
-
-    //disable button if critical level is met
-    var btn=document.getElementById("add");
-    if(totalCost2 < settingsCritics){
-        btn.disabled=false;
-    }else if(totalCost2 > settingsCritics){
-        btn.disabled=true;
-
-}
-
-    
-
-    
-
-
-   
-    
-    //color the total based on the criteria
-     if (totalCost2 > settingsCritics){
-       
-        // adding the danger class will make the text red
-        document.getElementById("totalSettings").classList.add("danger");
+    document.querySelector("#add").addEventListener('click', function(){
+            var checkedRadioBtn = document.querySelector("input[name='billItemTypeWithSettings']:checked");
         
-           }
-              else if (totalCost2 > settingsWarn){
-        document.getElementById("totalSettings").classList.add("warning");
+            if (checkedRadioBtn){
+                var billItemTypeWithSettings = checkedRadioBtn.value;
+                // billItemType will be 'call' or 'sms'
+            }
+            
+            if (billItemTypeWithSettings === "call"){
+                settingsBillingInstance.makeCall();
+                // callsTotal2 += settingsCall;
+        
+            }
+            else if (billItemTypeWithSettings === "sms"){
+                settingsBillingInstance.sendSms();
+                //smsTotal2 += settingsSms;
+            }
+            
+            //update the totals that is displayed on the screen.
+            document.getElementById("callTotalSettings").innerHTML = settingsBillingInstance.getTotalCallCost().toFixed(2);
+            document.getElementById("smsTotalSettings").innerHTML = settingsBillingInstance.getTotalSmsCost().toFixed(2);
+            // var totalCost2 = callsTotal2 + smsTotal2;
+            document.querySelector(".totalSettings").innerHTML = settingsBillingInstance.getTotalCost().toFixed(2);
+            applyColor();
+        
+           
+        
+            
+            
+            
+            })
+        
+        
 
+        
+
+
+    document.querySelector(".updateSettings").addEventListener('click', function (){
+        settingsBillingInstance.setCallCost(Number(document.getElementById("callCost").value));
+        settingsBillingInstance.setSmsCost(Number(document.getElementById("smsCost").value));
+
+        settingsBillingInstance.setCriticalLevel(Number(document.getElementById("critical").value));
+
+        settingsBillingInstance.setWarningLevel(Number(document.getElementById("warning").value));
+        
+        
+        
+
+    })
+
+    function applyColor(){
+        // //color the total based on the criteria
+        document.querySelector(".totalSettings").classList.remove("danger");
+        document.querySelector(".totalSettings").classList.remove("warning");
+        document.querySelector(".totalSettings").classList.add(settingsBillingInstance.totalClassName())
 
         }
-
+    
+         
+    
+    
+    
+     
+    
     
 
-    
-    }
-
-
-  
-
-    function update(){
-        settingsCall = Number(document.getElementById("callCost").value);
-
-        settingsSms = Number(document.getElementById("smsCost").value);
-
-        settingsCritics = Number(document.getElementById("critical").value);
-
-        settingsWarn = Number(document.getElementById("warning").value);
-        
-    }
     
     
     
