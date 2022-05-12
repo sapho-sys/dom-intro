@@ -19,12 +19,7 @@ var settingsBillingInstance = BillWithSettings();
             applyColor();
         })
         
-        
-
-        
-
-
-    document.querySelector(".updateSettings").addEventListener('click', function (){
+        document.querySelector(".updateSettings").addEventListener('click', function (){
         settingsBillingInstance.setCallCost(Number(document.getElementById("callCost").value));
         settingsBillingInstance.setSmsCost(Number(document.getElementById("smsCost").value));
         settingsBillingInstance.setCriticalLevel(Number(document.getElementById("critical").value));
